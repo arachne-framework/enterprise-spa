@@ -1,11 +1,10 @@
-# application-template-1
+# enterprise-spa
 
-An Arachne application with the basic setup for the following:
+An Arachne application with the following basic stack:
 
+- Leiningen
 - Datomic Pro
 - Logback logging
 - ClojureScript
 - Figwheel
 - Rum
-- Hiccup
-
