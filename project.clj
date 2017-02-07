@@ -20,7 +20,10 @@
 
                  [rum "0.10.8"]]
   :profiles {:dev {:source-paths ["dev"]
-                   :dependencies [[reloaded.repl "0.2.3"
-                                   :exclusions [com.stuartsierra/component]]]}}
+                   :dependencies [[com.cemerick/piggieback "0.2.1"
+                                   :exclusions [org.clojure/clojurescript]]
+                                  [reloaded.repl "0.2.3"
+                                   :exclusions [com.stuartsierra/component]]]
+                   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
   :repositories [["arachne-dev"
                   "http://maven.arachne-framework.org/artifactory/arachne-dev"]])

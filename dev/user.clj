@@ -1,6 +1,7 @@
  (ns user
    (:require [reloaded.repl :refer [set-init! system init start stop go reset reset-all]]
              [arachne.core :as a]
+             [arachne.figwheel :as fig]
              [org.arachne-framework.application-template-1 :as app])
 
    )
@@ -19,3 +20,8 @@
     rt))
 
 (set-init! #(init-arachne ::app/runtime))
+
+(defn cljs-repl
+  "Launch a CLJS repl for a Figwheel in the currently running Arachne system"
+  []
+  (fig/repl system))
