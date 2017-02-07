@@ -1,0 +1,36 @@
+<configuration debug="false">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level - %logger{36} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/application-template-1.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>application-template-1.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <!--<totalSizeCap>1GB</totalSizeCap>-->
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level - %logger{36} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+      <appender-ref ref="FILE"/>
+    </root>
+
+    <logger name="org.arachne-framework" level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="arachne" level="INFO">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+
+</configuration>
