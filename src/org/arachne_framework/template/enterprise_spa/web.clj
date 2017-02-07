@@ -1,4 +1,4 @@
-(ns org.arachne-framework.application-template-1.web)
+(ns org.arachne-framework.template.enterprise-spa.web)
 
 (defn healthcheck
   [req]

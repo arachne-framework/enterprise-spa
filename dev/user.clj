@@ -2,8 +2,7 @@
    (:require [reloaded.repl :refer [set-init! system init start stop go reset reset-all]]
              [arachne.core :as a]
              [arachne.figwheel :as fig]
-             [org.arachne-framework.application-template-1 :as app])
-
+             [org.arachne-framework.template.enterprise-spa :as app])
    )
 
 (def ^{:dynamic true
@@ -14,7 +13,7 @@
 (defn init-arachne
   "Create an Arachne runtime"
   [runtime]
-  (let [cfg (a/config :org.arachne-framework/application-template-1)
+  (let [cfg (a/config :org.arachne-framework.template/enterprise-spa)
         rt (a/runtime cfg runtime)]
     (alter-var-root #'*cfg* (constantly cfg))
     rt))

@@ -7,7 +7,7 @@
 (require '[arachne.figwheel.dsl :as fig])
 
 ;; Make things shorter to type...
-(alias 'app 'org.arachne-framework.application-template-1)
+(alias 'app 'org.arachne-framework.template.enterprise-spa)
 
 ;; Always in dev mode, for now
 (def dev? (constantly true))
@@ -23,12 +23,12 @@
   (pa/interceptor ::app/asset-interceptor :index? true)
 
   (h/endpoint :get "/healthcheck"
-    (h/handler 'org.arachne-framework.application-template-1.web/healthcheck))
+    (h/handler 'org.arachne-framework.template.enterprise-spa.web/healthcheck))
 
   )
 
 ;; ClojureScript setup
-(def cljs-opts {:main 'org.arachne-framework.application-template-1
+(def cljs-opts {:main 'org.arachne-framework.template.enterprise-spa
                 :optimizations (if (dev?) :none :advanced)
                 :asset-path "js/out"
                 :output-to "js/app.js"
