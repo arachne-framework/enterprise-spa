@@ -1,10 +1,10 @@
 (defproject org.arachne-framework.template/enterprise-spa "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
 
-                 [org.arachne-framework/pedestal-assets "0.1.0-master-0005-5aa151f"]
-                 [org.arachne-framework/arachne-figwheel "0.1.0-master-0010-14c65c6"]
+                 [org.arachne-framework/pedestal-assets "0.1.0-master-0006-46abdf0"]
+                 [org.arachne-framework/arachne-figwheel "0.1.0-master-0011-735f99c"]
 
-                 [com.datomic/datomic-pro "0.9.5554"
+                 [com.datomic/datomic-free "0.9.5554"
                   :exclusions [org.slf4j/slf4j-api
                                org.slf4j/slf4j-nop
                                org.slf4j/slf4j-log4j12
