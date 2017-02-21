@@ -9,7 +9,7 @@
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>log/enterprise-spa.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>enterprise-spa.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>log/enterprise-spa.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <!--<totalSizeCap>1GB</totalSizeCap>-->
         </rollingPolicy>

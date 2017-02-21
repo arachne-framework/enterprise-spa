@@ -6,3 +6,4 @@
 
 (rum/mount (hello "Hello, world!")
   (.getElementById js/document "app"))
+

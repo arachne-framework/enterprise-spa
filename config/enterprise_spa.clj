@@ -27,7 +27,11 @@
 
   )
 
-;; ClojureScript setup
+;; Asset Pipeline setup
+(aa/input-dir ::app/public-dir "public" :classpath? true :watch? (dev?))
+
+(aa/pipeline [::app/public-dir ::app/asset-interceptor])
+
 (def cljs-opts {:main 'org.arachne-framework.template.enterprise-spa
                 :optimizations (if (dev?) :none :advanced)
                 :asset-path "js/out"
@@ -36,17 +40,21 @@
                 :source-map-timestamp true})
 
 (aa/input-dir ::app/src-dir "src" :watch? (dev?))
+
+;; For prod mode, use a standard CLJS build pipeline
 (cljs/build ::app/cljs cljs-opts)
 (aa/pipeline [::app/src-dir ::app/cljs])
 
-;; Asset Pipeline setup
-(aa/input-dir ::app/public-dir "public" :classpath? true :watch? (dev?))
-(aa/pipeline [::app/public-dir ::app/asset-interceptor]
-             [::app/cljs ::app/asset-interceptor])
-
-;; Figwheel (dynamic CLJS development)
+;; Figwheel ClojureScript setup (dynamic CLJS development)
 (fig/server ::app/figwheel cljs-opts :port 8888)
 
 (aa/pipeline
   [::app/src-dir ::app/figwheel #{:src}]
   [::app/public-dir ::app/figwheel #{:public}])
+
+;; Always use Figwheel for builds in dev
+(if (dev?)
+  (aa/pipeline [::app/figwheel ::app/asset-interceptor])
+  (aa/pipeline [::app/cljs ::app/asset-interceptor]))
+
+
