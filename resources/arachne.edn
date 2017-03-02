@@ -1,4 +1,4 @@
 [{:arachne/name :org.arachne-framework.template/enterprise-spa
-  :arachne/inits ["config/enterprise_spa.clj"]
+  :arachne/inits [org.arachne-framework.template.enterprise-spa.config]
   :arachne/dependencies [:org.arachne-framework/pedestal-assets
                          :org.arachne-framework/arachne-figwheel]}]
