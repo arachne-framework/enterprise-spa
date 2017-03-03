@@ -26,5 +26,6 @@
                                   [reloaded.repl "0.2.3"
                                    :exclusions [com.stuartsierra/component]]]
                    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
+  :main arachne.run
   :repositories [["arachne-dev"
                   "http://maven.arachne-framework.org/artifactory/arachne-dev"]])
