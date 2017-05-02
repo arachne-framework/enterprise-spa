@@ -1,4 +1,5 @@
 [{:arachne/name :org.arachne-framework.template/enterprise-spa
-  :arachne/inits [org.arachne-framework.template.enterprise-spa.config]
+  :arachne/inits [org.arachne-framework.template.enterprise-spa]
   :arachne/dependencies [:org.arachne-framework/pedestal-assets
-                         :org.arachne-framework/arachne-figwheel]}]
+                         :org.arachne-framework/arachne-figwheel
+                         :org.arachne-framework/arachne-sass]}]

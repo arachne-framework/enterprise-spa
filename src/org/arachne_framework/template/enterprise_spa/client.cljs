@@ -1,4 +1,4 @@
-(ns org.arachne-framework.template.enterprise-spa
+(ns org.arachne-framework.template.enterprise-spa.client
   (:require [rum.core :as rum]))
 
 (rum/defc hello [text]

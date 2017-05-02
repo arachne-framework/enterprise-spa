@@ -18,8 +18,7 @@
     [com.stuartsierra.component :as component]
     [com.stuartsierra.component.repl :refer [reset set-init start stop system]]
     [arachne.core :as a]
-    [arachne.figwheel :as fig]
-    [org.arachne-framework.template.enterprise-spa :as app]))
+    [arachne.figwheel :as fig]))
 
 ;; Do not try to load source code from 'resources' or 'config' directory
 (clojure.tools.namespace.repl/set-refresh-dirs "dev" "src" "test")
@@ -29,7 +28,7 @@
   []
   (a/runtime
     (a/config :org.arachne-framework.template/enterprise-spa)
-    ::app/runtime))
+    :org.arachne-framework.template.enterprise-spa/runtime))
 
 (set-init (fn [_] (dev-system)))
 
