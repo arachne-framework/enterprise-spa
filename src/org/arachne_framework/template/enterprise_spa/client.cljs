@@ -17,9 +17,7 @@
   [app-state send version]
   [:nav.navbar.navbar-default.navbar-fixed-top
    [:div.navbar-header
-    [:img {:src "/img/arachne.svg"
-           :height "50"
-           :width "80"}]]
+    [:img#logo {:src "/img/arachne.png"}]]
    [:div.container-fluid
     [:ul.nav.navbar-nav
      (nav-link app-state send "Page 1" "/page-1")
