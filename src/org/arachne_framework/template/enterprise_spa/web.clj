@@ -13,11 +13,17 @@
   (rum/render-static-markup
     [:html {:lang "en"}
      [:head
-      [:title "My Application"]]
+      [:title "My Application"]
+      [:link {:rel "stylesheet" :type "text/css"
+              :href "/bootstrap/3.3.7-1/css/bootstrap.min.css"}]
+      [:link {:rel "stylesheet" :type "text/css"
+              :href "/css/app.css"}]]
      [:body
       [:div#app]
       [:script {:type "text/javascript"
-                :src "/js/app.js"}]]]))
+                :src "/js/app.js"}]
+      [:script {:type "text/javascript"}
+       "org.arachne_framework.template.enterprise_spa.client.main()"]]]))
 
 (defn app
   "Handler for serving the application main page"

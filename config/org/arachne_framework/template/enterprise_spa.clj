@@ -6,7 +6,8 @@
    [arachne.assets.dsl :as aa]
    [arachne.pedestal-assets.dsl :as pa]
    [arachne.cljs.dsl :as cljs]
-   [arachne.figwheel.dsl :as fig]))
+   [arachne.figwheel.dsl :as fig]
+   [arachne.sass.dsl :as sass]))
 
 ;; Always in dev mode, for now
 (def dev? (constantly true))
@@ -31,9 +32,24 @@
     ))
 
 ;; Asset Pipeline setup
-(a/id ::public-dir (aa/input-dir "public" :classpath? true :watch? (dev?)))
 
-(aa/pipeline [::public-dir ::asset-interceptor])
+(a/id ::public-dir (aa/input-dir "public" :classpath? true :watch? (dev?)))
+(a/id ::sass-dir (aa/input-dir "sass" :classpath? true :watch? (dev?)))
+(a/id ::webjars (aa/input-dir "META-INF/resources/webjars" :classpath? true))
+
+
+(aa/pipeline [::webjars ::asset-interceptor]
+             [::public-dir ::asset-interceptor]
+             [::sass-dir ::sass-build]
+             [::sass-build ::asset-interceptor])
+
+
+(a/id ::sass-build
+  (sass/build {:entrypoint "app.scss"
+               :output-to "app.css"
+               :output-dir "css"
+               :source-map (dev?)
+               :precision 6}))
 
 (def cljs-opts {:main 'org.arachne-framework.template.enterprise-spa.client
                 :optimizations (if (dev?) :none :advanced)
@@ -49,11 +65,17 @@
 (aa/pipeline [::src-dir ::cljs])
 
 ;; Figwheel ClojureScript setup (dynamic CLJS development)
-(a/id ::figwheel (fig/server cljs-opts :port 8888))
+(a/id ::figwheel
+  (fig/server cljs-opts
+    :port 8888
+    :css? true
+    :on-jsload 'org.arachne-framework.template.enterprise-spa.client/on-jsload))
 
 (aa/pipeline
   [::src-dir ::figwheel #{:src}]
-  [::public-dir ::figwheel #{:public}])
+  [::public-dir ::figwheel #{:public}]
+  [::sass-build ::figwheel #{:public}]
+  [::webjars ::figwheel #{:public}])
 
 ;; Always use Figwheel for builds in dev
 (aa/pipeline [(if (dev?) ::figwheel ::cljs)
