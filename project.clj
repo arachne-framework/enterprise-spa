@@ -27,8 +27,7 @@
                                    :exclusions [org.clojure/clojurescript]]
                                   [com.stuartsierra/component.repl "0.2.0"]
                                   [org.clojure/tools.namespace "0.2.11"]]
-                   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
-                   :main user}}
+                   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
   :main arachne.run
   :repositories [["arachne-dev"
                   "http://maven.arachne-framework.org/artifactory/arachne-dev"]])
