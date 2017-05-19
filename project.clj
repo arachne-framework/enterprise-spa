@@ -22,6 +22,7 @@
                  [rum "0.10.8"]
                  [org.webjars/bootstrap "3.3.7-1"]]
   :source-paths ["src" "config"]
+  :repl-options {:init-ns user}
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[com.cemerick/piggieback "0.2.1"
                                    :exclusions [org.clojure/clojurescript]]
