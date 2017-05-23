@@ -46,8 +46,7 @@
 
 (a/id ::sass-build
   (sass/build {:entrypoint "app.scss"
-               :output-to "app.css"
-               :output-dir "css"
+               :output-to "css/app.css"
                :source-map (dev?)
                :precision 6}))
 
