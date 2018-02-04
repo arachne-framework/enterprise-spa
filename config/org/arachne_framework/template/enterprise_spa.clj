@@ -40,6 +40,7 @@
 
 (aa/pipeline [::webjars ::asset-interceptor]
              [::public-dir ::asset-interceptor]
+             [::webjars ::sass-build]
              [::sass-dir ::sass-build]
              [::sass-build ::asset-interceptor])
 
